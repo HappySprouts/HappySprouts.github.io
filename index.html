@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Sprouts | Pediatric Physical Therapy</title>
+  <style>
+    :root {
+      --primary-color: #14A3D4;
+      --secondary-color: #8CC63F;
+      --accent-color: #EC2930;
+      --light-bg: #f0fafd;
+      --text-color: #333;
+      --font-main: 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-color);
+      background-color: white;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: white;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .navbar .nav-links a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    .navbar .nav-buttons a {
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .call { background-color: var(--primary-color); }
+    .review { background-color: var(--secondary-color); }
+    .get-started { background-color: var(--accent-color); }
+
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero img.logo {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .hero img.banner-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 10px 0 20px;
+    }
+
+    .hero .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-accent {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    .intro-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .intro-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .intro-text {
+      flex: 1;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .service-box {
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .service-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .service-box p {
+      font-weight: bold;
+      padding: 15px;
+    }
+
+    .testimonial-section {
+      background-color: var(--light-bg);
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background-color: #8CC63F;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 400px;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .testimonial-card::before {
+      content: "\2605\2605\2605\2605\2605";
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card p {
+      margin: 10px 0;
+    }
+
+    .why-choose {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .why-choose img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+    }
+
+    .why-text {
+      flex: 1;
+    }
+
+    .location iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: var(--light-bg);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-text">Happy Sprouts</div>
+	<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Sprouts | Pediatric Physical Therapy</title>
+
+  <!-- Google Font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #14A3D4;
+      --secondary-color: #8CC63F;
+      --accent-color: #EC2930;
+      --light-bg: #f0fafd;
+      --text-color: #333;
+      --font-main: 'Segoe UI', sans-serif;
+    }
+
+    .navbar .logo-text {
+      font-family: 'Comic Neue', cursive, sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      letter-spacing: 2px;
+    }
+
+    /* Other styles... */
+  </style>
+</head>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">What We Offer</a>
+      <a href="#team">Our Team</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="tel:+63321234567" class="call">(032) 123-4567</a>
+      <a href="#review" class="review">REVIEW US</a>
+      <a href="#contact" class="get-started">GET STARTED</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="clinic background.jpg" alt="Clinic Banner" class="banner-img">
+    <h1>Happy Sprouts</h1>
+    <p>Rooted in Care, Growing with Joy</p>
+    <div class="cta-buttons">
+      <a href="#services" class="btn-primary">Who Can Benefit</a>
+      <a href="#contact" class="btn-primary btn-accent">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro-section">
+      <img src="child.jpg" alt="Child with Therapist">
+      <div class="intro-text">
+        <h2>Where Every Journey Matters</h2>
+        <p>At Happy Sprouts, we’re dedicated to helping children overcome physical challenges through compassionate and personalized care. Our pediatric therapists create an environment that fosters confidence, growth, and independence. We offer early intervention, developmental therapy, and rehabilitative services that support your child’s journey at their own pace.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>Our Mission & Vision</h2>
+      <p>To provide compassionate, evidence-based physical therapy services that support the growth, development, and functional independence of every child. We are committed to partnering with families to deliver personalized care in a safe, child-friendly environment.</p>
+      <p>To be a leading pediatric physical therapy clinic known for excellence in rehabilitative care, early intervention, and family-centered approaches empowering children to reach their fullest potential in movement and daily life.</p>
+    </section>
+
+    <section class="objectives">
+      <h2>Objectives</h2>
+      <ul>
+        <li>Deliver Quality Care</li>
+        <li>Promote Family Involvement</li>
+        <li>Support Holistic Development</li>
+        <li>Ensure Safe and Child-Friendly Environment</li>
+        <li>Foster Professional Growth</li>
+        <li>Build Community Connections</li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2>What We Offer</h2>
+      <div class="services-grid">
+        <div class="service-box"><img src="gait.jpg" alt="Gait"><p>Gait Training</p></div>
+        <div class="service-box"><img src="sensory.jpg" alt="Sensory"><p>Sensory Integration</p></div>
+        <div class="service-box"><img src="delay.jpg" alt="Delay"><p>Developmental Delay</p></div>
+        <div class="service-box"><img src="parent.jpg" alt="Parent"><p>Parent Education</p></div>
+        <div class="service-box"><img src="balance.jpg" alt="Balance"><p>Balance Training</p></div>
+        <div class="service-box"><img src="Pediatricaqua.jpg" alt="Hydrotherapy"><p>Hydrotherapy</p></div>
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <h2>What Our Families Are Saying</h2>
+      <h3 style="color: #14A3D4; font-size: 1.2rem; margin-bottom: 30px;">REAL STORIES, REAL SUCCESSES</h3>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p><strong>Great environment for therapy!</strong></p>
+          <p>It’s always a very clean, positive and fun environment! Kiddos definitely enjoy coming and you can tell by all the smiles and laughter!!</p>
+          <p>- MEGAN L.</p>
+        </div>
+        <div class="testimonial-card">
+          <p><strong>They helped my daughter excel!</strong></p>
+          <p>John and Hannah are phenomenal and helped my daughter tremendously. Thank you so much!</p>
+          <p>- ALLIE W.</p>
+        </div>
+      </div>
+      <div class="cta-buttons" style="margin-top: 20px;">
+        <a href="#" class="btn-primary">View More Testimonials</a>
+        <a href="#contact" class="btn-primary btn-accent">Get Started</a>
+      </div>
+    </section>
+
+    <section class="why-choose">
+      <img src="why.jpg" alt="Therapy Session">
+      <div class="why-text">
+        <h2>Why Choose Happy Sprouts?</h2>
+        <p><strong style="color: var(--primary-color);">We're Providing Therapy With a Heart</strong></p>
+        <p>At Happy Sprouts, our mission is to inspire children and families to achieve their goals in a supportive and respectful environment. We prioritize trust, strong connections, and a desire for excellence in all we do. Our holistic approach ensures that every child receives the care they need to thrive, with a focus on readiness and comfort.</p>
+        
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div><img src="samantha.jpg" alt="Samantha"><p>Samantha Kaye Recla</p></div>
+        <div><img src="jerico.jpg" alt="Jerico"><p>Jerico Ganoza</p></div>
+        <div><img src="clarence.jpg" alt="Clarence"><p>Clarence Micutuan</p></div>
+        <div><img src="yves.jpg" alt="Yves"><p>Yves Pastrano</p></div>
+        <div><img src="babyrose.jpg" alt="Baby Rose"><p>Baby Rose Balansag</p></div>
+        <div><img src="shahannah.jpg" alt="Shahannah"><p>Shahannah Jame Geraldo</p></div>
+        <div><img src="johannah.jpg" alt="Johannah"><p>Johannah Andrea Padillo</p></div>
+      </div>
+    </section>
+
+    <section id="location" class="location">
+      <h2>Visit Us</h2>
+      <p>City Time Square, Basak-Marigondon Rd, Lapu-Lapu City</p>
+      <iframe src="https://www.google.com/maps?q=City+Time+Square,+Basak-Marigondon+Rd,+Lapu-Lapu+City&output=embed"></iframe>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:happysprouts.pt@gmail.com">happysprouts.pt@gmail.com</a></p>
+      <p>Phone: (032) 123-4567</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Happy Sprouts Pediatric Physical Therapy Clinic. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Sprouts | Pediatric Physical Therapy</title>
+  <style>
+    :root {
+      --primary-color: #14A3D4;
+      --secondary-color: #8CC63F;
+      --accent-color: #EC2930;
+      --light-bg: #f0fafd;
+      --text-color: #333;
+      --font-main: 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-color);
+      background-color: white;
+      line-height: 1.6;
+    }
+
+    /* Existing styles here... */
+
+    /* Chatbot styles */
+    .chatbox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .chatbox-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .chatbox-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+
+    .chatbox-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .chatbox-input input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .chatbox-input button {
+      margin-left: 5px;
+      background-color: var(--primary-color);
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <!-- Existing content here -->
+
+  <!-- Chatbot Toggle Button -->
+  <button class="chat-toggle" onclick="toggleChat()">💬</button>
+
+  <!-- Chatbot Box -->
+  <div class="chatbox" id="chatbox">
+    <div class="chatbox-header">
+      <span>Ask HappyBot!</span>
+      <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✖</button>
+    </div>
+    <div class="chatbox-body" id="chatBody">
+      <p><strong>Hi there! 👋</strong></p>
+      <p>How can we help you today?</p>
+      <p><em>Example: What services do you offer?</em></p>
+    </div>
+    <div class="chatbox-input">
+      <input type="text" id="userInput" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById('chatbox');
+    const chatBody = document.getElementById('chatBody');
+    const userInput = document.getElementById('userInput');
+
+    function toggleChat() {
+      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      // Display user message
+      const userMsg = document.createElement('p');
+      userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+      chatBody.appendChild(userMsg);
+
+      // Simple auto-replies
+      let reply = "I'm sorry, I don't understand. Can you rephrase?";
+      if (/service|offer/i.test(message)) reply = "We offer gait training, sensory integration, hydrotherapy, and more!";
+      else if (/location/i.test(message)) reply = "We're located at City Time Square, Basak-Marigondon Rd, Lapu-Lapu City.";
+      else if (/schedule|appointment/i.test(message)) reply = "You can contact us at (032) 123-4567 to schedule an appointment.";
+      else if (/email/i.test(message)) reply = "You can email us at happysprouts.pt@gmail.com.";
+
+      const botReply = document.createElement('p');
+      botReply.innerHTML = `<strong>HappyBot:</strong> ${reply}`;
+      chatBody.appendChild(botReply);
+
+      userInput.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      // TODO: Send this to admin via email/API/backend integration if desired
+    }
+  </script>
+</body>
+</html>
