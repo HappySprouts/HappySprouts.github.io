@@ -297,11 +297,20 @@
     </div>
   </nav>
 
- <header class="hero">
-  <img src="final logo.png" alt="Happy Sprouts Logo" class="logo">
-  <h1>Happy Sprouts</h1>
-  <p>Rooted in Care, Growing with Joy</p>
-  <div class="cta-buttons">
+ <header class="hero" style="position: relative; padding: 0;">
+  <img src="first background.png" alt="Clinic Banner" class="banner-img" style="width: 100%; height: auto; object-fit: cover; max-height: 600px;">
+
+  <!-- Logo in top-left corner -->
+  <div style="position: absolute; top: 30px; left: 30px; display: flex; align-items: center; gap: 15px;">
+    <img src="final logo.png" alt="Happy Sprouts Logo" style="height: 80px; width: 80px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <div style="color: white; font-size: 1.3rem; max-width: 400px; font-weight: 600; background-color: rgba(0,0,0,0.4); padding: 12px 16px; border-radius: 10px;">
+      Helping kids grow stronger, one playful step at a time!<br>
+      Pediatric Physical, Occupational, and Speech Therapy.
+    </div>
+  </div>
+
+  <!-- CTA buttons centered at bottom of hero -->
+  <div class="cta-buttons" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);">
     <a href="#services" class="btn-primary">Who Can Benefit</a>
     <a href="#contact" class="btn-primary btn-accent">Get Started</a>
   </div>
