@@ -270,7 +270,7 @@
       --font-main: 'Segoe UI', sans-serif;
     }
 
-    .navbar .logo-text {
+ {
       font-family: 'Comic Neue', cursive, sans-serif;
       font-size: 2.5rem;
       font-weight: 700;
@@ -296,47 +296,52 @@
     </div>
   </nav>
 
- <header class="hero" style="padding: 0; margin: 0;">
-  <!-- Green Header Bar with Logo and Text -->
-  <div style="
-    background-color: #8CC63F;
-    display: flex;
-    align-items: center;
-    padding: 20px 30px;
-    gap: 20px;
-    flex-wrap: wrap;
+ <header class="hero" style="position: relative; height: 500px; overflow: hidden;">
+  <!-- Background Image -->
+  <img src="first background.png" alt="Clinic Banner" style="
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   ">
-    <!-- Logo -->
-    <img src="final logo.png" alt="Happy Sprouts Logo" style="
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    ">
 
-    <!-- Text -->
-    <div style="
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      max-width: 700px;
-      line-height: 1.4;
+  <!-- Top-Left Logo -->
+  <div style="
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 10;
+  ">
+    <img src="final logo.png" alt="Happy Sprouts Logo" style="
+      height: 90px;
+      width: 90px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background-color: white;
+      padding: 5px;
     ">
-      Helping kids grow stronger, one playful step at a time!<br>
-      Pediatric Physical, Occupational, and Speech Therapy.
-    </div>
   </div>
 
-  <!-- Background Image Below the Green Header -->
-  <div style="width: 100%; overflow: hidden;">
-    <img src="first background.png" alt="Clinic Banner" style="
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      max-height: 500px;
-      display: block;
-    ">
+  <!-- Floating Green Text Box -->
+  <div style="
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8CC63F;
+    color: white;
+    padding: 25px 30px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+    z-index: 5;
+  ">
+    Helping kids grow stronger, one playful step at a time!<br>
+    Pediatric Physical, Occupational, and Speech Therapy.
   </div>
 </header>
 
@@ -410,18 +415,63 @@
       </div>
     </section>
 
-    <section id="team" class="team">
-      <h2>Meet Our Team</h2>
-      <div class="team-grid">
-        <div><img src="sam.png" alt="Samantha"><p>Samantha Kaye Recla l ADMIN</p></div>
-        <div><img src="jerico.png" alt="Jerico"><p>Jerico Ganoza l CLINICAL DIRECTOR</p></div>
-        <div><img src="clarence.png" alt="Clarence"><p>Clarence Micutuan l SPEECH PATHOLOGIST</p></div>
-        <div><img src="yves.png" alt="Yves"><p>Yves Pastrano l ADMIN</p></div>
-        <div><img src="rose.png" alt="Baby Rose"><p>Baby Rose Balansag I OCCUPATIONAL THERAPIST</p></div>
-        <div><img src="shabee.png" alt="Shahannah"><p>Shahannah Jame Geraldo l PHYSICAL THERAPIST</p></div>
-        <div><img src="johannah.png" alt="Johannah"><p>Johannah Andrea Padillo l CLINICAL DIRECTOR</p></div>
-      </div>
-    </section>
+    <section id="team" class="team" style="padding: 60px 20px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; color: #14A3D4; font-size: 2rem; margin-bottom: 30px;">Meet Our Team</h2>
+
+  <div class="team-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+  ">
+
+    <div>
+      <img src="sam.png" alt="Samantha" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Samantha Kaye Recla</p>
+      <p style="font-size: 0.9rem; color: #777;">Admin</p>
+    </div>
+
+    <div>
+      <img src="jerico.png" alt="Jerico" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Jerico Ganoza</p>
+      <p style="font-size: 0.9rem; color: #777;">Clinical Director</p>
+    </div>
+
+    <div>
+      <img src="clarence.png" alt="Clarence" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Clarence Micutuan</p>
+      <p style="font-size: 0.9rem; color: #777;">Speech Pathologist</p>
+    </div>
+
+    <div>
+      <img src="yves.png" alt="Yves" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Yves Pastrano</p>
+      <p style="font-size: 0.9rem; color: #777;">Admin</p>
+    </div>
+
+    <div>
+      <img src="rose.png" alt="Baby Rose" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Baby Rose Balansag</p>
+      <p style="font-size: 0.9rem; color: #777;">Occupational Therapist</p>
+    </div>
+
+    <div>
+      <img src="shabee.png" alt="Shahannah" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Shahannah Jame Geraldo</p>
+      <p style="font-size: 0.9rem; color: #777;">Physical Therapist</p>
+    </div>
+
+    <div>
+      <img src="johannah.png" alt="Johannah" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+      <p style="font-weight: 600; color: #333;">Johannah Andrea Padillo</p>
+      <p style="font-size: 0.9rem; color: #777;">Clinical Director</p>
+    </div>
+
+  </div>
+</section>
+
 
     <section id="location" class="location">
       <h2>Visit Us</h2>
