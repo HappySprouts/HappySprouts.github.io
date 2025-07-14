@@ -8,90 +8,79 @@
     @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 
     body {
-      font-family: 'Comic Neue', cursive;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 20px;
-      background: linear-gradient(to bottom right, #f0fafd, #d9f9ff);
+      padding: 0;
+      background-color: #f0fafd;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(to right, #14A3D4, #8CC63F);
+      background: linear-gradient(to right, #8CC63F, #14A3D4);
       color: white;
-      padding: 30px 20px;
       text-align: center;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 40px 20px;
+      border-bottom: 6px solid #14A3D4;
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-family: 'Comic Neue', cursive;
+      font-size: 2.8rem;
       margin-bottom: 10px;
     }
 
-    .content {
-      max-width: 900px;
-      margin: 30px auto;
-      background: white url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-      padding: 40px;
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: white;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 40px;
+    }
+
+    section {
+      margin-bottom: 40px;
     }
 
     h2 {
-      color: #14A3D4;
       font-size: 1.8rem;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #8CC63F;
-      padding-bottom: 5px;
+      color: #14A3D4;
+      margin-bottom: 10px;
     }
 
-    p, li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 12px;
+    h3 {
+      color: #EC2930;
+      margin-top: 25px;
+      margin-bottom: 10px;
     }
 
     ul {
       padding-left: 20px;
-      margin-bottom: 20px;
     }
 
-    .core-values {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    ul li {
+      margin-bottom: 10px;
     }
 
-    .core-values div {
-      background-color: #e8fafd;
-      border-left: 5px solid #14A3D4;
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    .core-values div span {
-      font-size: 1.5rem;
+    .core-values span {
       font-weight: bold;
-      color: #14A3D4;
       display: inline-block;
-      margin-bottom: 5px;
+      margin-right: 8px;
+      color: #8CC63F;
     }
 
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      color: #EC2930;
-      font-weight: bold;
-      background-color: #fdf3f4;
-      padding: 10px 20px;
-      border-radius: 25px;
-      transition: background-color 0.3s ease;
+    .core-values p {
+      margin-bottom: 12px;
     }
 
-    a.back:hover {
-      background-color: #ffe9ec;
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #dff7fb;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
@@ -99,45 +88,63 @@
 
   <header>
     <h1>About Happy Sprouts</h1>
-    <p>Where Growing Strong and Moving Brightly Begins!</p>
+    <p>Nurturing Growth Through Movement, Play & Care</p>
   </header>
 
-  <div class="content">
-    <h2>Mission</h2>
-    <ul>
-      <li>Provide compassionate, evidence-based physical therapy services tailored to each child’s needs.</li>
-      <li>Partner with families to deliver personalized care in a safe and child-friendly environment.</li>
-      <li>Support the growth, development, and independence of every child through early and holistic intervention.</li>
-      <li>Promote continued learning and professional development among staff to ensure high standards of pediatric care.</li>
-      <li>Collaborate with healthcare providers, schools, and communities to ensure continuity of care and support.</li>
-    </ul>
+  <div class="container">
 
-    <h2>Vision</h2>
-    <p>We envision becoming a leading pediatric physical therapy clinic known for excellence in rehabilitative care, early intervention, and family-centered approaches empowering children to reach their fullest potential in movement and daily life.</p>
+    <section>
+      <h2>Who We Are</h2>
+      <p><strong>Happy Sprouts</strong> is a pediatric physical therapy clinic that welcomes children of all abilities into a warm and supportive space. We chose the name because we believe that, like sprouts, every child grows in their own time with the right care. Some of the kids we work with are building new skills, others are healing from injury, and some have conditions that make movement more challenging. No matter the situation, we focus on helping each child move with more comfort and confidence.</p>
+      <p>Every session is shaped with care, patience, and respect for their unique path.</p>
+      <p>Our approach to therapy is rooted in <strong>play</strong>. Children learn best when they are having fun, so we design each session around what excites and motivates them. We use games, toys, movement, and music to support strength, balance, and coordination in ways that feel enjoyable. Each activity is guided by both physical goals and emotional well-being. We want every child to leave each visit feeling proud, supported, and more confident in their body.</p>
+      <p>Families are always involved in the process. We listen closely to parents and caregivers, share updates often, and offer ideas to support progress at home. Our goal is to create a team around each child, with the family at the center. At Happy Sprouts, growth is more than physical—it includes building self-esteem, resilience, and joy. We are here to help children feel seen, safe, and successful as they grow into their full potential.</p>
+    </section>
 
-    <h2>Goals</h2>
-    <ul>
-      <li><strong>Deliver Effective Therapy:</strong> Provide evidence-based physical therapy interventions tailored to each child's unique needs.</li>
-      <li><strong>Promote Family Involvement:</strong> Engage parents and caregivers as active participants through education, collaboration, and home programs.</li>
-      <li><strong>Support Holistic Development:</strong> Address cognitive, emotional, and social aspects of child development within therapy goals.</li>
-      <li><strong>Ensure Safe, Child-Friendly Environment:</strong> Maintain a welcoming atmosphere supporting comfort and motivation for all children.</li>
-      <li><strong>Foster Professional Growth:</strong> Encourage ongoing training to ensure high standards in pediatric rehabilitation.</li>
-      <li><strong>Build Community Connections:</strong> Collaborate with pediatricians, schools, and organizations for continuity of care.</li>
-    </ul>
+    <section>
+      <h2>Mission</h2>
+      <ul>
+        <li>Provide compassionate, evidence-based physical therapy services tailored to each child’s needs.</li>
+        <li>Partner with families to deliver personalized care in a safe and child-friendly environment.</li>
+        <li>Support the growth, development, and independence of every child through early and holistic intervention.</li>
+        <li>Promote continued learning and professional development among staff to ensure high standards of pediatric care.</li>
+        <li>Collaborate with healthcare providers, schools, and communities to ensure continuity of care and support.</li>
+      </ul>
+    </section>
 
-    <h2>Core Values</h2>
-    <div class="core-values">
-      <div><span>S – Safety</span>We prioritize the physical and emotional safety of every child, ensuring a secure and supportive environment.</div>
-      <div><span>P – Playfulness</span>We embrace play as a therapeutic tool to connect with children, reduce fear, and foster joy.</div>
-      <div><span>R – Respect</span>We honor each child and family's individuality, dignity, and background with open communication.</div>
-      <div><span>O – Optimism</span>We maintain a hopeful and positive outlook, inspiring belief in every child's potential.</div>
-      <div><span>U – Understanding</span>We practice empathy and active listening to understand unique needs and experiences.</div>
-      <div><span>T – Teamwork</span>We work collaboratively with families and professionals to deliver holistic care.</div>
-      <div><span>S – Service</span>We are dedicated to compassionate, patient-centered care that supports children’s development and well-being.</div>
-    </div>
+    <section>
+      <h2>Vision</h2>
+      <p>We envision becoming a leading pediatric physical therapy clinic known for excellence in rehabilitative care, early intervention, and family-centered approaches—empowering children to reach their fullest potential in movement and daily life.</p>
+    </section>
 
-    <a href="index.html" class="back">← Back to Main Page</a>
+    <section>
+      <h2>Our Goals</h2>
+      <ul>
+        <li><strong>Deliver Effective Interventions:</strong> Constantly provide evidence-based therapy tailored to each child.</li>
+        <li><strong>Promote Family Involvement:</strong> Engage parents and caregivers as active participants in the therapy process.</li>
+        <li><strong>Support Holistic Development:</strong> Address physical, cognitive, emotional, and social aspects of growth.</li>
+        <li><strong>Ensure a Safe Environment:</strong> Maintain a warm, motivating space for children of all abilities.</li>
+        <li><strong>Foster Professional Growth:</strong> Encourage staff training and learning for best practices in pediatric rehab.</li>
+        <li><strong>Build Community Connections:</strong> Work with schools, doctors, and organizations for a broader support system.</li>
+      </ul>
+    </section>
+
+    <section class="core-values">
+      <h2>Our Core Values</h2>
+      <p><span>S</span> for <strong>Safety</strong>: We prioritize the physical and emotional safety of every child.</p>
+      <p><span>P</span> for <strong>Playfulness</strong>: We use play to connect, motivate, and engage children in therapy.</p>
+      <p><span>R</span> for <strong>Respect</strong>: We honor the dignity and background of every child and family.</p>
+      <p><span>O</span> for <strong>Optimism</strong>: We inspire families with a hopeful outlook and belief in progress.</p>
+      <p><span>U</span> for <strong>Understanding</strong>: We practice empathy and active listening to truly meet each child’s needs.</p>
+      <p><span>T</span> for <strong>Teamwork</strong>: We collaborate with families and professionals to support each child fully.</p>
+      <p><span>S</span> for <strong>Service</strong>: We serve with compassion and dedication to children’s growth and development.</p>
+    </section>
+
   </div>
+
+  <footer>
+    &copy; 2025 Happy Sprouts Pediatric Therapy Clinic. All rights reserved.
+  </footer>
 
 </body>
 </html>
