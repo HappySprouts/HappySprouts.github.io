@@ -92,6 +92,12 @@
       background-color: #ffe9ec;
     }
   </style>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      window.location.href = "thank-you.html"; // Redirect to thank you page
+    }
+  </script>
 </head>
 <body>
 
@@ -101,7 +107,7 @@
   </header>
 
   <div class="content">
-    <form action="#" method="POST">
+    <form onsubmit="handleSubmit(event)">
       <label for="name">Child's Full Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -135,3 +141,4 @@
 
 </body>
 </html>
+
