@@ -91,11 +91,32 @@
     a.back:hover {
       background-color: #ffe9ec;
     }
+
+    #otherServiceContainer {
+      display: none;
+    }
   </style>
+
   <script>
     function handleSubmit(event) {
       event.preventDefault();
-      window.location.href = "thank-you.html"; // Redirect to thank you page
+      // You can also log or store form values here if needed
+      window.location.href = "thank.html"; // Redirect to thank you page
+    }
+
+    function checkServiceSelection() {
+      const serviceSelect = document.getElementById("service");
+      const otherContainer = document.getElementById("otherServiceContainer");
+      const otherInput = document.getElementById("otherService");
+
+      if (serviceSelect.value === "Other") {
+        otherContainer.style.display = "block";
+        otherInput.setAttribute("required", "required");
+      } else {
+        otherContainer.style.display = "none";
+        otherInput.removeAttribute("required");
+        otherInput.value = "";
+      }
     }
   </script>
 </head>
@@ -121,14 +142,20 @@
       <input type="tel" id="contact" name="contact" placeholder="e.g. 0912-345-6789" required>
 
       <label for="service">Type of Service</label>
-      <select id="service" name="service" required>
+      <select id="service" name="service" onchange="checkServiceSelection()" required>
         <option value="" disabled selected>Select a service</option>
         <option value="Physical Therapy">Physical Therapy (PT)</option>
         <option value="Occupational Therapy">Occupational Therapy (OT)</option>
         <option value="Speech Therapy">Speech-Language Pathology (SLP)</option>
         <option value="Developmental Screening">Developmental Screening</option>
         <option value="Parent Consultation">Parent Consultation</option>
+        <option value="Other">Other (please specify)</option>
       </select>
+
+      <div id="otherServiceContainer">
+        <label for="otherService">Please specify the service</label>
+        <input type="text" id="otherService" name="otherService" placeholder="Specify other service">
+      </div>
 
       <label for="reason">Reason for Appointment / Notes</label>
       <textarea id="reason" name="reason" placeholder="Tell us a bit about your concern..." required></textarea>
