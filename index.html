@@ -572,56 +572,150 @@
   <button class="chat-toggle" onclick="toggleChat()">💬</button>
 
   <!-- Chatbot Box -->
-  <div class="chatbox" id="chatbox">
-    <div class="chatbox-header">
-      <span>Ask HappyBot!</span>
-      <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✖</button>
-    </div>
-    <div class="chatbox-body" id="chatBody">
-      <p><strong>Hi there! 👋</strong></p>
-      <p>How can we help you today?</p>
-      <p><em>Example: What services do you offer?</em></p>
-    </div>
-    <div class="chatbox-input">
-      <input type="text" id="userInput" placeholder="Type your message...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
+<style>
+  .chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border: 2px solid #14A3D4;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    font-family: 'Comic Neue', cursive;
+    z-index: 9999;
+  }
+
+  .chatbox-header {
+    background-color: #14A3D4;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbox-body {
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 0.95rem;
+  }
+
+  .chatbox-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  .chatbox-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 0 0 0 15px;
+    font-size: 0.9rem;
+  }
+
+  .chatbox-input button {
+    background-color: #14A3D4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 0 15px 0;
+    cursor: pointer;
+  }
+
+  .chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #14A3D4;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 9998;
+  }
+</style>
+
+<!-- Chat Toggle Button -->
+<button class="chat-toggle-btn" onclick="toggleChat()">💬 Ask HappyBot</button>
+
+<div class="chatbox" id="chatbox">
+  <div class="chatbox-header">
+    <span>Ask HappyBot!</span>
+    <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✖</button>
   </div>
+  <div class="chatbox-body" id="chatBody">
+    <p><strong>Hi there! 👋</strong></p>
+    <p>How can we help you today?</p>
+    <p><em>Examples:</em></p>
+    <ul style="padding-left: 15px;">
+      <li>What services do you offer?</li>
+      <li>How do I book an appointment?</li>
+      <li>What’s your clinic schedule?</li>
+      <li>Where are you located?</li>
+      <li>How much is speech therapy?</li>
+    </ul>
+  </div>
+  <div class="chatbox-input">
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 
-  <script>
-    const chatbox = document.getElementById('chatbox');
-    const chatBody = document.getElementById('chatBody');
-    const userInput = document.getElementById('userInput');
+<script>
+  function toggleChat() {
+    const box = document.getElementById("chatbox");
+    box.style.display = box.style.display === "flex" ? "none" : "flex";
+  }
 
-    function toggleChat() {
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    const chatBody = document.getElementById("chatBody");
+
+    if (message === "") return;
+
+    // Show user's message
+    const userMsg = document.createElement("p");
+    userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+    chatBody.appendChild(userMsg);
+
+    // Bot response
+    const botReply = document.createElement("p");
+    botReply.innerHTML = `<strong>HappyBot:</strong> ${getBotReply(message)}`;
+    chatBody.appendChild(botReply);
+
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function getBotReply(message) {
+    const msg = message.toLowerCase();
+
+    if (msg.includes("service") || msg.includes("offer")) {
+      return "We offer Physical Therapy, Occupational Therapy, Speech Therapy, and more! 😊";
+    } else if (msg.includes("book") || msg.includes("appointment")) {
+      return "You can book an appointment by visiting our Booking page! 📅";
+    } else if (msg.includes("location")) {
+      return "We’re located in a child-friendly clinic space in [Your City]! 🏡";
+    } else if (msg.includes("price") || msg.includes("cost") || msg.includes("how much")) {
+      return "You can view pricing under the 'Services & Pricing' page! 💰";
+    } else if (msg.includes("schedule") || msg.includes("open")) {
+      return "We’re open Monday to Saturday from 9:00 AM to 5:00 PM! 🕘";
+    } else if (msg.includes("speech")) {
+      return "Speech Therapy helps with communication, language, and articulation. 🎤";
+    } else {
+      return "Hmm, I’m still learning! Try asking about services, pricing, booking, or location. 🤖";
     }
+  }
+</script>
 
-    function sendMessage() {
-      const message = userInput.value.trim();
-      if (!message) return;
-
-      // Display user message
-      const userMsg = document.createElement('p');
-      userMsg.innerHTML = `<strong>You:</strong> ${message}`;
-      chatBody.appendChild(userMsg);
-
-      // Simple auto-replies
-      let reply = "I'm sorry, I don't understand. Can you rephrase?";
-      if (/service|offer/i.test(message)) reply = "We offer gait training, sensory integration, hydrotherapy, and more!";
-      else if (/location/i.test(message)) reply = "We're located at City Time Square, Basak-Marigondon Rd, Lapu-Lapu City.";
-      else if (/schedule|appointment/i.test(message)) reply = "You can contact us at (032) 123-4567 to schedule an appointment.";
-      else if (/email/i.test(message)) reply = "You can email us at happysprouts.pt@gmail.com.";
-
-      const botReply = document.createElement('p');
-      botReply.innerHTML = `<strong>HappyBot:</strong> ${reply}`;
-      chatBody.appendChild(botReply);
-
-      userInput.value = '';
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      // TODO: Send this to admin via email/API/backend integration if desired
-    }
-  </script>
 </body>
 </html>
