@@ -708,9 +708,97 @@
   }
 </style>
 
-<!-- Chat Toggle Button -->
-<button class="chat-toggle-btn" onclick="toggleChat()">💬 Ask HappyBot</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HappyBot Chat</title>
+  <style>
+    /* Chatbox Styles */
+    .chatbox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-family: 'Comic Neue', cursive;
+      z-index: 1000;
+    }
 
+    .chatbox-header {
+      background: linear-gradient(to right, #14A3D4, #8CC63F);
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      font-size: 16px;
+    }
+
+    .chatbox-body {
+      max-height: 250px;
+      overflow-y: auto;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .chatbox-body p {
+      margin: 8px 0;
+    }
+
+    .chatbox-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chatbox-input input {
+      flex-grow: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .chatbox-input button {
+      background-color: #14A3D4;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-bottom-right-radius: 12px;
+    }
+
+    /* Toggle Button */
+    #chatToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #14A3D4;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 999;
+    }
+
+    #chatbox {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Chatbot Toggle Button -->
+<button id="chatToggleBtn" onclick="toggleChat()">💬</button>
+
+<!-- Chatbot Box -->
 <div class="chatbox" id="chatbox">
   <div class="chatbox-header">
     <span>Ask HappyBot!</span>
@@ -720,12 +808,12 @@
     <p><strong>Hi there! 👋</strong></p>
     <p>How can we help you today?</p>
     <p><em>Examples:</em></p>
-    <ul style="padding-left: 15px;">
+    <ul>
       <li>What services do you offer?</li>
       <li>How do I book an appointment?</li>
-      <li>What’s your clinic schedule?</li>
-      <li>Where are you located?</li>
-      <li>How much is speech therapy?</li>
+      <li>What are your prices?</li>
+      <li>Connect me to a therapist</li>
+      <li>What are your clinic hours?</li>
     </ul>
   </div>
   <div class="chatbox-input">
@@ -736,51 +824,56 @@
 
 <script>
   function toggleChat() {
-    const box = document.getElementById("chatbox");
-    box.style.display = box.style.display === "flex" ? "none" : "flex";
+    const chatbox = document.getElementById("chatbox");
+    const btn = document.getElementById("chatToggleBtn");
+    if (chatbox.style.display === "none") {
+      chatbox.style.display = "block";
+      btn.style.display = "none";
+    } else {
+      chatbox.style.display = "none";
+      btn.style.display = "block";
+    }
   }
 
   function sendMessage() {
     const input = document.getElementById("userInput");
     const message = input.value.trim();
-    const chatBody = document.getElementById("chatBody");
-
     if (message === "") return;
 
-    // Show user's message
-    const userMsg = document.createElement("p");
-    userMsg.innerHTML = `<strong>You:</strong> ${message}`;
-    chatBody.appendChild(userMsg);
-
-    // Bot response
-    const botReply = document.createElement("p");
-    botReply.innerHTML = `<strong>HappyBot:</strong> ${getBotReply(message)}`;
-    chatBody.appendChild(botReply);
-
+    const chatBody = document.getElementById("chatBody");
+    const userMessage = `<p><strong>You:</strong> ${message}</p>`;
+    chatBody.innerHTML += userMessage;
     input.value = "";
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
 
-  function getBotReply(message) {
-    const msg = message.toLowerCase();
+    let reply = "";
 
-    if (msg.includes("service") || msg.includes("offer")) {
-      return "We offer Physical Therapy, Occupational Therapy, Speech Therapy, and more! 😊";
-    } else if (msg.includes("book") || msg.includes("appointment")) {
-      return "You can book an appointment by visiting our Booking page! 📅";
-    } else if (msg.includes("location")) {
-      return "We’re located in a child-friendly clinic space in [Your City]! 🏡";
-    } else if (msg.includes("price") || msg.includes("cost") || msg.includes("how much")) {
-      return "You can view pricing under the 'Services & Pricing' page! 💰";
-    } else if (msg.includes("schedule") || msg.includes("open")) {
-      return "We’re open Monday to Saturday from 9:00 AM to 5:00 PM! 🕘";
-    } else if (msg.includes("speech")) {
-      return "Speech Therapy helps with communication, language, and articulation. 🎤";
+    const lower = message.toLowerCase();
+
+    if (lower.includes("service")) {
+      reply = "We offer physical therapy, occupational therapy, speech therapy, developmental screening, and parent consultations!";
+    } else if (lower.includes("price") || lower.includes("cost") || lower.includes("rate")) {
+      reply = "You can view our detailed pricing here: <a href='prices.html' style='color:#14A3D4;'>View Services & Pricing</a>";
+    } else if (lower.includes("book") || lower.includes("appointment")) {
+      reply = "Sure! You can book an appointment on our <a href='book.html' style='color:#14A3D4;'>Booking Page</a>.";
+    } else if (lower.includes("connect") && lower.includes("therapist")) {
+      reply = "We'll notify a therapist to reach out to you. Please make sure to fill out the <a href='book.html' style='color:#14A3D4;'>appointment form</a> with your contact details.";
+    } else if (lower.includes("hello") || lower.includes("hi")) {
+      reply = "Hello! 👋 I'm HappyBot, your assistant here. How can I help?";
+    } else if (lower.includes("hour") || lower.includes("open")) {
+      reply = "Our clinic is open Monday to Saturday, from 8:00 AM to 5:00 PM!";
+    } else if (lower.includes("location") || lower.includes("where")) {
+      reply = "We’re located at 123 Sprout Street, Kidstown. 📍";
     } else {
-      return "Hmm, I’m still learning! Try asking about services, pricing, booking, or location. 🤖";
+      reply = "Sorry, I’m still learning! Try asking about services, appointments, or pricing.";
     }
+
+    setTimeout(() => {
+      chatBody.innerHTML += `<p><strong>HappyBot:</strong> ${reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 500);
   }
 </script>
 
 </body>
 </html>
+
